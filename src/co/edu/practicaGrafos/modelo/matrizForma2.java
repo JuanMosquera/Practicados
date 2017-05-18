@@ -1,4 +1,4 @@
-package practicados;
+package co.edu.practicaGrafos.modelo;
 
 public class matrizForma2
 {

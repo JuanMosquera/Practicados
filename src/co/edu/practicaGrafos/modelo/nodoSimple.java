@@ -1,19 +1,26 @@
-package practicados;
+package co.edu.practicaGrafos.modelo;
 
 public class nodoSimple 
 {
     private Object dato;
+    private int potencia;
     private nodoSimple liga;
     
-    public nodoSimple(Object d)
+    public nodoSimple(Object d, int coef)
     {
         dato = d;
+        potencia  = coef;
         liga = null;
     }
     
     public Object retornaDato()
     {
         return dato;
+    }
+    
+    public int retornaPotencia()
+    {
+        return potencia;
     }
     
     public nodoSimple retornaLiga()
@@ -29,5 +36,10 @@ public class nodoSimple
     public void asignaLiga(nodoSimple l)
     {
         liga = l;
+    }
+    
+    public void asignaCoeficiente(int c)
+    {
+        potencia = c;
     }
 }

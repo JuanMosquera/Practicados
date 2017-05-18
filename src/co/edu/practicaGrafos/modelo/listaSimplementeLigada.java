@@ -1,5 +1,5 @@
 
-package practicados;
+package co.edu.practicaGrafos.modelo;
 
 public class listaSimplementeLigada 
 {
@@ -81,10 +81,10 @@ public class listaSimplementeLigada
     
     //Consigue un nuevo nodo, lo carga con el dato d entrado como parametro e
     //invoca el nodo conectar a continuacion del nodo y entrado como parametro
-    public void insertar(int d, nodoSimple y)
+    public void insertar(int d, int coef, nodoSimple y)
     {
         nodoSimple x;
-        x = new nodoSimple(d);
+        x = new nodoSimple(d, coef);
         conectar(x, y);
     }
     
@@ -108,6 +108,10 @@ public class listaSimplementeLigada
                 primero = x;
                 ultimo = x;
             }
+            else
+            {
+                primero = x;
+            }
         }        
     }
     
@@ -116,7 +120,7 @@ public class listaSimplementeLigada
     //nodo anterior al del nodo en el cual se encontro d
     public nodoSimple buscarDato(int d, nodoSimple y)
     {
-        nodoSimple p = new nodoSimple(null);
+        nodoSimple p = new nodoSimple(null, 0);
         return p;
     }
     

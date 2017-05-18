@@ -1,4 +1,4 @@
-package practicados;
+package co.edu.practicaGrafos.modelo;
 
 import java.io.BufferedReader;
 import java.io.IOException;
