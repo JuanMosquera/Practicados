@@ -1,4 +1,4 @@
-package co.edu.practicaGrafos.modelo;
+package co.edu.polinomioCromatico.polinomio;
 
 import java.math.BigInteger;
 
@@ -255,7 +255,7 @@ public class polinomio extends listaSimplementeLigada
         
         float a,b,r;
         String x,y;
-        nodoSimple nuevo;
+       nodoSimple nuevo;
 
             a=(float) uno.retornaDato();
             b=(float) dos.retornaDato();

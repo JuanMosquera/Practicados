@@ -1,4 +1,4 @@
-package co.edu.practicaGrafos.modelo;
+package co.edu.polinomioCromatico.modelo.grafo;
 
 public class matrizForma2
 {
@@ -56,21 +56,18 @@ public class matrizForma2
     
     public void conectaPorColumnasForma2(nodoDoble x)
     {
-        nodoDoble p, q, anterior;
-        tripleta tq, tx;
-        tx = (tripleta)x.retornaDato();
-        p = nodoCabeza();
-        anterior = p;
-        q = p.retornaLi();
-        tq = (tripleta)q.retornaDato();
+        tripleta tx = (tripleta)x.retornaDato();
+        nodoDoble p = nodoCabeza();
+        nodoDoble anterior = p;
+        nodoDoble q = p.retornaLi();
+        tripleta tq = (tripleta)q.retornaDato();
         while(q!=p && tq.retornaColumna()<tx.retornaColumna())
         {
             anterior = q;
             q = q.retornaLi();
             tq = (tripleta)q.retornaDato();
         }
-        while(q!=p && tq.retornaColumna()==tx.retornaColumna() && 
-                tq.retornaFila()<tx.retornaFila())
+        while(q!=p && tq.retornaColumna()==tx.retornaColumna() && tq.retornaFila()<tx.retornaFila())
         {
             anterior = q;
             q = q.retornaLi();
@@ -78,32 +75,31 @@ public class matrizForma2
         }
         anterior.asignaLi(x);
         x.asignaLi(q);
+//        tripleta tmat = (tripleta)mat.retornaDato();
+//        tmat.asignaValor((int)tmat.retornaValor()+1);
     }
     
     public void conectaPorFilasForma2(nodoDoble x)
     {
-        nodoDoble p, q, anterior;
-        tripleta tq, tx;
-        tx = (tripleta)x.retornaDato();
-        p = nodoCabeza();
-        anterior = p;
-        q = p.retornaLi();
-        tq = (tripleta)q.retornaDato();
+        tripleta tx = (tripleta)x.retornaDato();
+        nodoDoble p = nodoCabeza();
+        nodoDoble anterior = p;
+        nodoDoble q = p.retornaLd();
+        tripleta tq = (tripleta)q.retornaDato();
         while(q!=p && tq.retornaFila()<tx.retornaFila())
         {
             anterior = q;
             q = q.retornaLd();
             tq = (tripleta)q.retornaDato();
         }
-        while(q!=p && tq.retornaFila()==tx.retornaFila() && 
-                tq.retornaColumna()<tx.retornaColumna())
+        while(q!=p && tq.retornaFila()==tx.retornaFila() && tq.retornaColumna()<tx.retornaColumna())
         {
             anterior = q;
             q = q.retornaLd();
             tq = (tripleta)q.retornaDato();
         }
         anterior.asignaLd(x);
-        x.asignaLi(q);
+        x.asignaLd(q);
     }
     
 }

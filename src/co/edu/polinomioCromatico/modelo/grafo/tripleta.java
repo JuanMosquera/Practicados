@@ -1,4 +1,4 @@
-package co.edu.practicaGrafos.modelo;
+package co.edu.polinomioCromatico.modelo.grafo;
 
 public class tripleta 
 {
