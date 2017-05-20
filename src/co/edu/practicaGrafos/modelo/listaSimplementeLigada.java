@@ -59,6 +59,7 @@ public class listaSimplementeLigada
         while(!finDeRecorrido(p))
         {
             System.out.println(p.retornaDato());
+            System.out.println(p.retornaPotencia());
             p = p.retornaLiga();
         }
         System.out.println("Sale");
@@ -69,19 +70,45 @@ public class listaSimplementeLigada
     public nodoSimple buscaDondeInsertar(int d)
     {
         nodoSimple ap, p;
-        p = primerNodo();
-        ap = anterior(p);
-        while(!finDeRecorrido(p) && (int)p.retornaDato()<d)
-        {
-            ap = p;
-            p = p.retornaLiga();         
-        }
+        
+             p = primerNodo();
+            ap = anterior(p);
+//          
+            
+            while(!finDeRecorrido(p) && (int)p.retornaPotencia()>d)
+            {
+                ap = p;
+                p = p.retornaLiga();         
+            }
+        
+       
         return ap;
     }   
     
+    /*inserta un nodo de modo ordenado decendente*/
+    public void insertarordenado(nodoSimple x){
+        nodoSimple p,aux;
+        
+        if (this.esVacia()) {
+            p = new nodoSimple(x.retornaDato(), x.retornaPotencia());
+           this.insertar(x.retornaDato(), x.retornaPotencia(), p);
+        }else{
+            p=this.primerNodo();
+            aux=p;
+            while (!finDeRecorrido(p) && (double)x.retornaDato()<(double)p.retornaDato()) {
+                aux=p;
+                p=p.retornaLiga();
+            }
+            x.asignaLiga(aux.retornaLiga());
+            p=aux;
+            p.asignaLiga(x);
+        }
+    }
+    
+    
     //Consigue un nuevo nodo, lo carga con el dato d entrado como parametro e
     //invoca el nodo conectar a continuacion del nodo y entrado como parametro
-    public void insertar(int d, int coef, nodoSimple y)
+    public void insertar(Object d, int coef, nodoSimple y)
     {
         nodoSimple x;
         x = new nodoSimple(d, coef);
@@ -122,6 +149,45 @@ public class listaSimplementeLigada
     {
         nodoSimple p = new nodoSimple(null, 0);
         return p;
+    }
+    
+    
+     public void borrar(nodoSimple x ){
+        
+            nodoSimple p;
+            p = this.primerNodo();
+            
+            if(!esVacia())
+            {
+                if (x==p) {
+                    
+                    p.asignaLiga(x.retornaLiga());
+                    
+                }
+                System.out.println("a");
+                
+                while(p!=this.ultimoNodo())
+                {
+                    System.out.println("b");
+                   
+                    if (x==p.retornaLiga()) {
+
+                    p.asignaLiga(x.retornaLiga());
+                      break;
+                    }
+                    
+                    p=p.retornaLiga();
+                    
+                } 
+                
+            }
+            else
+            {
+                
+               System.out.println("La lista está vacía");
+                
+            }
+        
     }
     
     //Controla que x sea diferende de null, si lo es invoca el metodo desconectar
