@@ -15,7 +15,7 @@ public class controlador
     private administradorArchivos adm;
     private ArrayList<grafo> grafos;
     private ArrayList<String> listaGrafos;
-    private polinomio pol;
+    private polinomio pol,poli2,polisuma;
 
     
     public controlador()
@@ -56,16 +56,68 @@ public class controlador
         return pol.imprimePolinomio();
     }
     
+    public double evaluarP(String a){
+        int x =Integer.parseInt(a);
+        double result= pol.evaluar(pol, x);
+        return result;
+    }
+    
     public void reiniciarGrafos()
     {
         grafos = new ArrayList<grafo>();
         listaGrafos = new ArrayList<String>(); 
     }
-    public void crearPolinomio2(String polinomio)
+    public void crearPolinomio(String polinomio)
     {
-//        this.polinomio2 = new Polinomio(polinomio);
-//        this.polinomio2 = polinomio2.ordernar();
-//        this.polinomio2 = polinomio2.minimizar();        
+        this.poli2 = new polinomio(polinomio);
+               
     }
+    
+    public String imprimir(){
+        String result = poli2.imprimePolinomio();
+        return result;
+    }
+    
+    public String suma(){
+        pol = pol.suma(poli2);
+        return pol.imprimePolinomio();
+    }
+   
+     public String multiplicar(){
+        pol = pol.multiplicar(poli2);
+        return pol.imprimePolinomio();
+    }
+     
+    public boolean existen(){
+    
+        return (pol==null || poli2==null);
+    }
+    
+     public String factor(int x){
+        String respuesta=pol.esFactor(pol,x);
+        return respuesta;
+    }
+     
+    public int extraer(String l){
+        
+        
+        
+        l = l.toLowerCase();
+        l = l.replace("  ", "");
+        l = l.replace(" ", "");
+        l = l.replace("+", " +");
+        l = l.replace(" -", "-");
+        if (l.indexOf("+")!=-1) {
+            String[] fracciones;
+            fracciones = l.split(" ");
+            return Integer.parseInt(fracciones[1]);
+        } else {
+            
+            String[] fracciones = l.split("-");
+            return (Integer.parseInt(fracciones[1]));
+        }
+        
+    }
+
     
 }

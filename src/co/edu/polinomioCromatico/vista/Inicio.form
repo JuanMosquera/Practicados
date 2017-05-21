@@ -253,11 +253,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Suma"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sumaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="multiplicacion">
           <Properties>
             <Property name="text" type="java.lang.String" value="Multiplicaci&#xf3;n"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="multiplicacionActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="esFactor">
           <Properties>

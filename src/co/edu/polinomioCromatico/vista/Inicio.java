@@ -26,6 +26,7 @@ public class Inicio extends javax.swing.JFrame {
         controlador = new controlador();
         botonCalcularPolinomio.setEnabled(false);
         botonEvaluarPolinomio.setEnabled(false);
+        campo2.setEnabled(false);
     }
 
     /**
@@ -141,8 +142,18 @@ public class Inicio extends javax.swing.JFrame {
         });
 
         suma.setText("Suma");
+        suma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sumaActionPerformed(evt);
+            }
+        });
 
         multiplicacion.setText("Multiplicación");
+        multiplicacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                multiplicacionActionPerformed(evt);
+            }
+        });
 
         esFactor.setText("Es factor");
         esFactor.addActionListener(new java.awt.event.ActionListener() {
@@ -232,6 +243,7 @@ public class Inicio extends javax.swing.JFrame {
                 controlador.reiniciarGrafos();
                 botonCalcularPolinomio.setEnabled(false);
                 botonEvaluarPolinomio.setEnabled(false);
+                
                 listaGrafos.removeAllItems();
                 listaGrafos.addItem("-Grafos-");
                 cargarArchivo();
@@ -255,16 +267,25 @@ public class Inicio extends javax.swing.JFrame {
         {
             String polinomio = controlador.calcularPolinomio(listaGrafos.getSelectedIndex());
             areaTextoPolinomio.setText(polinomio);
+            
         }
+        
+        botonEvaluarPolinomio.setEnabled(true);
+        campo2.setEnabled(true);
+        
     }//GEN-LAST:event_botonCalcularPolinomioActionPerformed
 
     private void ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarActionPerformed
 //        // TODO add your handling code here:
-//        controlador.crearPolinomio2(campo2.getText());
-//        
-//        
-//        labelPolinomio1.setText(controlador.imprimePolinomio(0));
-//        campo2.setText("");   
+       
+         try {
+            controlador.crearPolinomio(campo2.getText()); 
+            areaTextoPolinomio.append('\n'+controlador.imprimir());
+            campo2.setText("");  
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No a ingresado nada en el campo de texto");
+        }
+         
     }//GEN-LAST:event_ingresarActionPerformed
 
     private void campo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo2ActionPerformed
@@ -273,11 +294,50 @@ public class Inicio extends javax.swing.JFrame {
 
     private void botonEvaluarPolinomioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEvaluarPolinomioActionPerformed
         // TODO add your handling code here:
+        try {
+            String valor = campo2.getText();
+            double result=controlador.evaluarP(valor);
+            areaTextoPolinomio.append('\n'+"El resultado de evaluar es:"+String.valueOf(result));
+            campo2.setText("");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "verificar el valor ingresado");
+        }
+        
+        
     }//GEN-LAST:event_botonEvaluarPolinomioActionPerformed
 
     private void esFactorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_esFactorActionPerformed
         // TODO add your handling code here:
+        
+        try {
+           String factor=campo2.getText();
+           areaTextoPolinomio.append('\n'+controlador.factor(controlador.extraer(factor)));
+           campo2.setText("");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "no a ingresado factor");
+        }
+        
+            
+        
     }//GEN-LAST:event_esFactorActionPerformed
+
+    private void sumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sumaActionPerformed
+        // TODO add your handling code here:
+        if (controlador.existen()) {
+            JOptionPane.showMessageDialog(null, "alguno de los dos polinomios no existe");
+        }else{
+        areaTextoPolinomio.append('\n'+ controlador.suma());
+        }
+    }//GEN-LAST:event_sumaActionPerformed
+
+    private void multiplicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multiplicacionActionPerformed
+        // TODO add your handling code here:
+         if (controlador.existen()) {
+            JOptionPane.showMessageDialog(null, "alguno de los dos polinomios no existe");
+        }else{
+        areaTextoPolinomio.append('\n'+ controlador.multiplicar());
+        }
+    }//GEN-LAST:event_multiplicacionActionPerformed
 
     private void cargarArchivo()
     {

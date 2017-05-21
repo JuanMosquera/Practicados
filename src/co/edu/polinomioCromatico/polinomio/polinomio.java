@@ -379,7 +379,7 @@ public class polinomio extends listaSimplementeLigada
     
     
      
-     
+////////////////imprimir polinomio/////////////////////
       public String imprimePolinomio()
     {
         
