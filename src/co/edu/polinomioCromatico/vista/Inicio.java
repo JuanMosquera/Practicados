@@ -5,24 +5,27 @@
  */
 package co.edu.polinomioCromatico.vista;
 
-import co.edu.polinomioCromatico.AdministradorArchivos.administradorArchivos;
+import co.edu.polinomioCromatico.controlador.controlador;
 import java.io.File;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Mario
  */
-public class Inicio extends javax.swing.JPanel 
-{
-    private administradorArchivos adm;
+public class Inicio extends javax.swing.JFrame {
 
+    private controlador controlador;
     /**
-     * Creates new form Inicio
+     * Creates new form Inicio2
      */
     public Inicio() {
         initComponents();
-        adm = new administradorArchivos();
+        setLocationRelativeTo(null);
+        controlador = new controlador();
+        botonCalcularPolinomio.setEnabled(false);
+        botonEvaluarPolinomio.setEnabled(false);
     }
 
     /**
@@ -34,55 +37,207 @@ public class Inicio extends javax.swing.JPanel
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        labelCargarDocumento = new javax.swing.JLabel();
-        botonCargarDocumento = new javax.swing.JButton();
+        panelCargarDocumento = new javax.swing.JPanel();
+        botonCargarArchivo = new javax.swing.JButton();
+        panelEleccionGrafo = new javax.swing.JPanel();
+        listaGrafos = new javax.swing.JComboBox<>();
+        botonCalcularPolinomio = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        areaTextoPolinomio = new javax.swing.JTextArea();
+        botonEvaluarPolinomio = new javax.swing.JButton();
 
-        labelCargarDocumento.setText("Cargar documentos");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        botonCargarDocumento.setText("Cargar Documento");
-        botonCargarDocumento.addActionListener(new java.awt.event.ActionListener() {
+        panelCargarDocumento.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cargado de archivos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+
+        botonCargarArchivo.setText("Cargar documento");
+        botonCargarArchivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonCargarDocumentoActionPerformed(evt);
+                botonCargarArchivoActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout panelCargarDocumentoLayout = new javax.swing.GroupLayout(panelCargarDocumento);
+        panelCargarDocumento.setLayout(panelCargarDocumentoLayout);
+        panelCargarDocumentoLayout.setHorizontalGroup(
+            panelCargarDocumentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCargarDocumentoLayout.createSequentialGroup()
+                .addGap(215, 215, 215)
+                .addComponent(botonCargarArchivo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelCargarDocumentoLayout.setVerticalGroup(
+            panelCargarDocumentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCargarDocumentoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonCargarArchivo)
+                .addGap(59, 59, 59))
+        );
+
+        panelEleccionGrafo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Elegir Grafo", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+
+        listaGrafos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Grafos-" }));
+
+        botonCalcularPolinomio.setText("Calcular Polinomio");
+        botonCalcularPolinomio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCalcularPolinomioActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelEleccionGrafoLayout = new javax.swing.GroupLayout(panelEleccionGrafo);
+        panelEleccionGrafo.setLayout(panelEleccionGrafoLayout);
+        panelEleccionGrafoLayout.setHorizontalGroup(
+            panelEleccionGrafoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEleccionGrafoLayout.createSequentialGroup()
+                .addContainerGap(155, Short.MAX_VALUE)
+                .addComponent(listaGrafos, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65)
+                .addComponent(botonCalcularPolinomio)
+                .addGap(125, 125, 125))
+        );
+        panelEleccionGrafoLayout.setVerticalGroup(
+            panelEleccionGrafoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEleccionGrafoLayout.createSequentialGroup()
+                .addContainerGap(38, Short.MAX_VALUE)
+                .addGroup(panelEleccionGrafoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botonCalcularPolinomio)
+                    .addComponent(listaGrafos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37))
+        );
+
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Polinomio Cromatico", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+
+        areaTextoPolinomio.setColumns(20);
+        areaTextoPolinomio.setRows(5);
+        jScrollPane1.setViewportView(areaTextoPolinomio);
+
+        botonEvaluarPolinomio.setText("Evaluar Polinomio");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(labelCargarDocumento)
-                .addGap(29, 29, 29)
-                .addComponent(botonCargarDocumento)
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelCargarDocumento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelEleccionGrafo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(234, 234, 234)
+                .addComponent(botonEvaluarPolinomio)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelCargarDocumento)
-                    .addComponent(botonCargarDocumento))
-                .addContainerGap(247, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(panelCargarDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelEleccionGrafo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(botonEvaluarPolinomio)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonCargarDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCargarDocumentoActionPerformed
-        JFileChooser archivo =new JFileChooser();
-        archivo.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);        
-        int result = archivo.showSaveDialog(this);
-        if (result == JFileChooser.APPROVE_OPTION) 
+    private void botonCargarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCargarArchivoActionPerformed
+        if(listaGrafos.getItemCount()>1)
         {
-            File archivoLeido = archivo.getSelectedFile();
-            String nombreArchivo = archivoLeido.getAbsolutePath();
-            
-        } 
-    }//GEN-LAST:event_botonCargarDocumentoActionPerformed
+            int opcion = JOptionPane.showConfirmDialog(null,"Ya se ha cargado un archivo anteriormente, ¿Seguro desea cargar uno diferente?", 
+                                "Polinomio Cromático 1.0", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if(opcion == JOptionPane.YES_OPTION)
+            {
+                controlador.reiniciarGrafos();
+                botonCalcularPolinomio.setEnabled(false);
+                botonEvaluarPolinomio.setEnabled(false);
+                listaGrafos.removeAllItems();
+                listaGrafos.addItem("-Grafos-");
+                cargarArchivo();
+                botonCalcularPolinomio.setEnabled(true);
+            }            
+        }
+        else
+        {
+            cargarArchivo();
+            botonCalcularPolinomio.setEnabled(true);            
+        }
+        
+    }//GEN-LAST:event_botonCargarArchivoActionPerformed
 
+    private void botonCalcularPolinomioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCalcularPolinomioActionPerformed
+        if(listaGrafos.getSelectedIndex()==0)
+        {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un grafo");
+        }
+    }//GEN-LAST:event_botonCalcularPolinomioActionPerformed
+
+    private void cargarArchivo()
+    {
+        JFileChooser archivo =new JFileChooser();
+            archivo.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);        
+            int result = archivo.showSaveDialog(this);
+            if (result == JFileChooser.APPROVE_OPTION) 
+            {
+                File archivoLeido = archivo.getSelectedFile();
+                String nombreArchivo = archivoLeido.getAbsolutePath();
+                controlador.leerArchivo(nombreArchivo);
+                for(int i=0; i<controlador.obtenerLongitudArray(); i++)
+                {
+                    listaGrafos.addItem(controlador.obtenerGrafoEnPosicion(i));
+                }
+            }
+    }
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Inicio().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonCargarDocumento;
-    private javax.swing.JLabel labelCargarDocumento;
+    private javax.swing.JTextArea areaTextoPolinomio;
+    private javax.swing.JButton botonCalcularPolinomio;
+    private javax.swing.JButton botonCargarArchivo;
+    private javax.swing.JButton botonEvaluarPolinomio;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox<String> listaGrafos;
+    private javax.swing.JPanel panelCargarDocumento;
+    private javax.swing.JPanel panelEleccionGrafo;
     // End of variables declaration//GEN-END:variables
 }

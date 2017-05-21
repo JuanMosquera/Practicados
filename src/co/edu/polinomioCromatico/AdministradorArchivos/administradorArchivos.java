@@ -47,15 +47,16 @@ public class administradorArchivos {
                         {
                           numero = numero+linea.charAt(i);  
                         }
-                        if(!"".equals(numero)&&i+1<linea.length())
+                        if(!"".equals(numero))
                         {
-                            for(int j=i+1; /*(linea.charAt(j)!=' ')||*/(j<linea.length()); j++)
+                            for(int j=i+1; (j<linea.length()); j++)
                             {
                                 if(linea.charAt(j)==' ')
                                 {
                                     break;
                                 }
                                 numero = numero+linea.charAt(j);
+                                i = j;
                             }
                             if(v!=0)
                             {
@@ -69,7 +70,6 @@ public class administradorArchivos {
                             }
                         }
                     }                    
-                    System.out.println(v+""+a);
                     numero = "";
                     grafoLeido = new grafo(v, a);
                     grafos.add(grafoLeido);
@@ -98,19 +98,17 @@ public class administradorArchivos {
                                     }
                                     if(!"".equals(numero))
                                     {
-                                        for(int k=j+1; /*(linea.charAt(k)!=' ')||*/(k<linea.length()); k++)
+                                        for(int k=j+1;(k<linea.length()); k++)
                                         {
                                             if(linea.charAt(k)==' ')
                                             {
                                                 break;
                                             } 
-                                            numero = linea.charAt(j)+""+linea.charAt(k);
-                                            System.out.println(numero);
-                                        }
-                                        System.out.println(numero);
+                                            numero = numero+""+linea.charAt(k);
+                                            j = k;
+                                        }                                        
                                         if(v!=0)
                                         {
-                                            System.out.println(numero);
                                             a = Integer.parseInt(numero);
                                             numero = "";
                                         }
@@ -122,10 +120,8 @@ public class administradorArchivos {
                                     }                                    
                                 }
                             }
-                            System.out.println(v+" "+a);
                             tripleta t = new tripleta(v, a, 1);
                             nodoDoble x = new nodoDoble(t);
-                            System.out.println(x);
                             grafoLeido.conectaPorFilas(x);
                             grafoLeido.conectaPorColumnas(x);
                             numero = "";
@@ -133,6 +129,8 @@ public class administradorArchivos {
                     }
                 }
                 linea = br.readLine();
+                a = 0;
+                v = 0;
             }          
         }catch(IOException ex){}
         return grafos;

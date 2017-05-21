@@ -22,4 +22,19 @@ public class grafo
     {
         matrizAdyacencia.conectaPorColumnasForma2(x);
     }
+    
+    public void muestraMatriz()
+    {
+        matrizAdyacencia.muestraMatriz();
+    }
+    
+    public int retornaVertices()
+    {
+        return vertices;
+    }
+    
+    public int retornaAristas()
+    {
+        return aristas;
+    }
 }

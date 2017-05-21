@@ -13,11 +13,13 @@ public class controlador
 {
     private administradorArchivos adm;
     private ArrayList<grafo> grafos;
+    private ArrayList<String> listaGrafos;
     
     public controlador()
     {
         adm = new administradorArchivos();
         grafos = new ArrayList<grafo>();
+        listaGrafos = new ArrayList<String>();
     }
     
     public void leerArchivo(String direccion)
@@ -26,6 +28,28 @@ public class controlador
         {
             grafos = adm.leerArchivo(direccion);
         }catch(FileNotFoundException e){}
+        for(int i = 0; i<grafos.size();i++)
+        {
+            String grafo = "G("+grafos.get(i).retornaVertices()+","+grafos.get(i).retornaAristas()+")";
+            listaGrafos.add(grafo);
+        }
+    }
+    
+    public String obtenerGrafoEnPosicion(int i)
+    {
+        String grafo = "G("+grafos.get(i).retornaVertices()+","+grafos.get(i).retornaAristas()+")";
+        return grafo;
+    }
+    
+    public int obtenerLongitudArray()
+    {
+        return grafos.size();
+    }
+    
+    public void reiniciarGrafos()
+    {
+        grafos = new ArrayList<grafo>();
+        listaGrafos = new ArrayList<String>(); 
     }
     
 }
