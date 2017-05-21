@@ -45,6 +45,12 @@ public class Inicio extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         areaTextoPolinomio = new javax.swing.JTextArea();
         botonEvaluarPolinomio = new javax.swing.JButton();
+        campo2 = new javax.swing.JTextField();
+        funcionalidades = new javax.swing.JPanel();
+        ingresar = new javax.swing.JButton();
+        suma = new javax.swing.JButton();
+        multiplicacion = new javax.swing.JButton();
+        esFactor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,22 +119,80 @@ public class Inicio extends javax.swing.JFrame {
         jScrollPane1.setViewportView(areaTextoPolinomio);
 
         botonEvaluarPolinomio.setText("Evaluar Polinomio");
+        botonEvaluarPolinomio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEvaluarPolinomioActionPerformed(evt);
+            }
+        });
+
+        campo2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campo2ActionPerformed(evt);
+            }
+        });
+
+        funcionalidades.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        ingresar.setText("Ingresar");
+        ingresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingresarActionPerformed(evt);
+            }
+        });
+
+        suma.setText("Suma");
+
+        multiplicacion.setText("Multiplicación");
+
+        esFactor.setText("Es factor");
+
+        javax.swing.GroupLayout funcionalidadesLayout = new javax.swing.GroupLayout(funcionalidades);
+        funcionalidades.setLayout(funcionalidadesLayout);
+        funcionalidadesLayout.setHorizontalGroup(
+            funcionalidadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(funcionalidadesLayout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addComponent(ingresar)
+                .addGap(18, 18, 18)
+                .addComponent(suma)
+                .addGap(18, 18, 18)
+                .addComponent(multiplicacion)
+                .addGap(18, 18, 18)
+                .addComponent(esFactor)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        funcionalidadesLayout.setVerticalGroup(
+            funcionalidadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(funcionalidadesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(funcionalidadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ingresar)
+                    .addComponent(suma)
+                    .addComponent(multiplicacion)
+                    .addComponent(esFactor))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelCargarDocumento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelEleccionGrafo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(campo2, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(76, 76, 76)
+                        .addComponent(botonEvaluarPolinomio)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(funcionalidades, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(panelCargarDocumento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(panelEleccionGrafo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(234, 234, 234)
-                .addComponent(botonEvaluarPolinomio)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,9 +204,15 @@ public class Inicio extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(botonEvaluarPolinomio)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(campo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonEvaluarPolinomio))
+                .addGap(51, 51, 51)
+                .addComponent(funcionalidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        funcionalidades.getAccessibleContext().setAccessibleName("Funcionalidades");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -177,6 +247,23 @@ public class Inicio extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un grafo");
         }
     }//GEN-LAST:event_botonCalcularPolinomioActionPerformed
+
+    private void ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarActionPerformed
+        // TODO add your handling code here:
+        controlador.crearPolinomio2(campo2.getText());
+        
+        
+        labelPolinomio1.setText(controlador.imprimePolinomio(0));
+        campo2.setText("");   
+    }//GEN-LAST:event_ingresarActionPerformed
+
+    private void campo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campo2ActionPerformed
+
+    private void botonEvaluarPolinomioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEvaluarPolinomioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonEvaluarPolinomioActionPerformed
 
     private void cargarArchivo()
     {
@@ -235,9 +322,15 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton botonCalcularPolinomio;
     private javax.swing.JButton botonCargarArchivo;
     private javax.swing.JButton botonEvaluarPolinomio;
+    private javax.swing.JTextField campo2;
+    private javax.swing.JButton esFactor;
+    private javax.swing.JPanel funcionalidades;
+    private javax.swing.JButton ingresar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> listaGrafos;
+    private javax.swing.JButton multiplicacion;
     private javax.swing.JPanel panelCargarDocumento;
     private javax.swing.JPanel panelEleccionGrafo;
+    private javax.swing.JButton suma;
     // End of variables declaration//GEN-END:variables
 }

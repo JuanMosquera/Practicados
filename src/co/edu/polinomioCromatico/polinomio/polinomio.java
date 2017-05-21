@@ -43,7 +43,8 @@ public class polinomio extends listaSimplementeLigada
             }
         }
     }
-    
+   /*constructor del polinomio recive un string y crea una lista simplemente ligada 
+    que contienen el polinomio ingresado como string*/ 
     public polinomio(String polinomio)
     {
         String[] letras;
@@ -89,7 +90,7 @@ public class polinomio extends listaSimplementeLigada
         }
     }
     
-    
+ //recive un string y separa sus caracteres en un vector   
      public String[] separarPolinomio(String polinomio)
     {
         String[] letras;

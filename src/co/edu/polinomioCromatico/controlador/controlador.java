@@ -51,5 +51,11 @@ public class controlador
         grafos = new ArrayList<grafo>();
         listaGrafos = new ArrayList<String>(); 
     }
+    public void crearPolinomio2(String polinomio)
+    {
+        this.polinomio2 = new Polinomio(polinomio);
+        this.polinomio2 = polinomio2.ordernar();
+        this.polinomio2 = polinomio2.minimizar();        
+    }
     
 }
