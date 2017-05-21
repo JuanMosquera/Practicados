@@ -145,6 +145,11 @@ public class Inicio extends javax.swing.JFrame {
         multiplicacion.setText("Multiplicación");
 
         esFactor.setText("Es factor");
+        esFactor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                esFactorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout funcionalidadesLayout = new javax.swing.GroupLayout(funcionalidades);
         funcionalidades.setLayout(funcionalidadesLayout);
@@ -246,15 +251,20 @@ public class Inicio extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un grafo");
         }
+        else
+        {
+            String polinomio = controlador.calcularPolinomio(listaGrafos.getSelectedIndex());
+            areaTextoPolinomio.setText(polinomio);
+        }
     }//GEN-LAST:event_botonCalcularPolinomioActionPerformed
 
     private void ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarActionPerformed
-        // TODO add your handling code here:
-        controlador.crearPolinomio2(campo2.getText());
-        
-        
-        labelPolinomio1.setText(controlador.imprimePolinomio(0));
-        campo2.setText("");   
+//        // TODO add your handling code here:
+//        controlador.crearPolinomio2(campo2.getText());
+//        
+//        
+//        labelPolinomio1.setText(controlador.imprimePolinomio(0));
+//        campo2.setText("");   
     }//GEN-LAST:event_ingresarActionPerformed
 
     private void campo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo2ActionPerformed
@@ -264,6 +274,10 @@ public class Inicio extends javax.swing.JFrame {
     private void botonEvaluarPolinomioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEvaluarPolinomioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botonEvaluarPolinomioActionPerformed
+
+    private void esFactorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_esFactorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_esFactorActionPerformed
 
     private void cargarArchivo()
     {

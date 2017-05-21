@@ -43,8 +43,7 @@ public class polinomio extends listaSimplementeLigada
             }
         }
     }
-   /*constructor del polinomio recive un string y crea una lista simplemente ligada 
-    que contienen el polinomio ingresado como string*/ 
+    
     public polinomio(String polinomio)
     {
         String[] letras;
@@ -64,6 +63,8 @@ public class polinomio extends listaSimplementeLigada
         nodoSimple nodo = primerNodo();
         for(int i=2;i<letras.length;i++)
         {
+            if(letras[i]!=null)
+            {
             if(letras[i].equals("+"))
             {
                 d = 1;
@@ -87,10 +88,11 @@ public class polinomio extends listaSimplementeLigada
             }
             insertar(d, p, nodo);
             nodo = nodo.retornaLiga();
+            }
         }
     }
     
- //recive un string y separa sus caracteres en un vector   
+    
      public String[] separarPolinomio(String polinomio)
     {
         String[] letras;
@@ -432,7 +434,6 @@ public class polinomio extends listaSimplementeLigada
                 pot = "";
             }
             sPolinomio = sPolinomio+""+d+""+pot;
-            System.out.println(pot);
             p = p.retornaLiga();
         }
         return sPolinomio;

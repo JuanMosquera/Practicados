@@ -164,11 +164,9 @@ public class listaSimplementeLigada
                     p.asignaLiga(x.retornaLiga());
                     
                 }
-                System.out.println("a");
                 
                 while(p!=this.ultimoNodo())
                 {
-                    System.out.println("b");
                    
                     if (x==p.retornaLiga()) {
 

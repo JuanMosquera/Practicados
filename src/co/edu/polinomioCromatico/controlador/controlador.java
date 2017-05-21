@@ -2,6 +2,7 @@ package co.edu.polinomioCromatico.controlador;
 
 import co.edu.polinomioCromatico.AdministradorArchivos.administradorArchivos;
 import co.edu.polinomioCromatico.modelo.grafo.grafo;
+import co.edu.polinomioCromatico.polinomio.polinomio;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
@@ -14,6 +15,8 @@ public class controlador
     private administradorArchivos adm;
     private ArrayList<grafo> grafos;
     private ArrayList<String> listaGrafos;
+    private polinomio pol;
+
     
     public controlador()
     {
@@ -46,6 +49,13 @@ public class controlador
         return grafos.size();
     }
     
+    public String calcularPolinomio(int i)
+    {
+        grafo grafoElegido = grafos.get(i-1);
+        pol = grafoElegido.polinomioConexo();
+        return pol.imprimePolinomio();
+    }
+    
     public void reiniciarGrafos()
     {
         grafos = new ArrayList<grafo>();
@@ -53,9 +63,9 @@ public class controlador
     }
     public void crearPolinomio2(String polinomio)
     {
-        this.polinomio2 = new Polinomio(polinomio);
-        this.polinomio2 = polinomio2.ordernar();
-        this.polinomio2 = polinomio2.minimizar();        
+//        this.polinomio2 = new Polinomio(polinomio);
+//        this.polinomio2 = polinomio2.ordernar();
+//        this.polinomio2 = polinomio2.minimizar();        
     }
     
 }

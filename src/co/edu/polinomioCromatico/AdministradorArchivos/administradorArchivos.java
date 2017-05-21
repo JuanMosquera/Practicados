@@ -9,14 +9,26 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
+/** 
+ * @author Mario
+ */
 public class administradorArchivos {
     
     private ArrayList<grafo> grafos;
     private grafo grafoLeido;
     
+    /**
+     * Constructor de la clase administrador de archivos
+     */
     public administradorArchivos(){}
     
+    /**
+     * 
+     * @param direccion de tipo String que debe tener la direccion del archivo 
+     * a leer.
+     * @return Regresa un ArrayList con los grafos leidos del documento
+     * @throws FileNotFoundException En caso de que el archivo no sea encontrado
+     */
     public ArrayList leerArchivo(String direccion) throws FileNotFoundException
     {
         String linea;

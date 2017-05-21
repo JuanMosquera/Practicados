@@ -54,6 +54,26 @@ public class matrizForma2
         }
     }
     
+    public nodoDoble retonarNodoEn(int f, int c)
+    {
+        nodoDoble p;
+        tripleta t;
+        p = primerNodo();
+        while(p!=nodoCabeza())
+        {
+            t = (tripleta)p.retornaDato();
+            if(t.retornaFila()==f && t.retornaColumna()==c)
+            {
+                return p;
+            }
+            else
+            {
+                p = p.retornaLd();
+            }
+        }
+        return p;
+    }
+    
     public void conectaPorColumnasForma2(nodoDoble x)
     {
         tripleta tx = (tripleta)x.retornaDato();
